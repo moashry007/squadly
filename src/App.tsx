@@ -3,7 +3,7 @@ import {
   Compass, PlusCircle, MessageSquare, User, Bell, ShieldAlert, CheckCircle2,
   MapPin, Calendar, Star, Search, Lock, Sparkles, ShieldCheck, AlertTriangle,
   LogOut, Globe, Phone, Mail, Camera, Trash2, Edit3, CreditCard, Gift, Navigation,
-  Smartphone, Users, X, Moon, Sun
+  Smartphone, Users, X, Moon, Sun, ArrowLeft
 } from 'lucide-react';
 import { tMsg, Lang } from './i18n/messages';
 import { ActivityDetailModal } from './components/ActivityModals';
@@ -673,8 +673,8 @@ export default function App() {
         {authStep === 'phone' && (
           <div className="flex-1 p-6 md:p-12 flex flex-col justify-between max-w-lg mx-auto w-full">
             <div>
-              <button onClick={() => setAuthStep('splash')} className="text-xs font-bold text-[#6B2FA0] mb-6 flex items-center gap-1 cursor-pointer">
-                ← {lang === 'ar' ? 'رجوع' : 'Back'}
+              <button onClick={() => setAuthStep('splash')} className="text-xs font-bold text-[#6B2FA0] mb-6 flex items-center gap-1.5 cursor-pointer">
+                <ArrowLeft className="w-3.5 h-3.5 rtl:rotate-180" /> {lang === 'ar' ? 'رجوع' : 'Back'}
               </button>
               <div className="w-12 h-12 rounded-2xl bg-purple-100 text-[#2E1A6E] flex items-center justify-center mb-4">
                 <Phone className="w-6 h-6" />
@@ -772,8 +772,8 @@ export default function App() {
         {authStep === 'otp' && (
           <div className="flex-1 p-6 md:p-12 flex flex-col justify-between max-w-lg mx-auto w-full">
             <div>
-              <button onClick={() => setAuthStep('phone')} className="text-xs font-bold text-[#6B2FA0] mb-6 cursor-pointer">
-                ← {lang === 'ar' ? 'تعديل الرقم' : 'Change Number'}
+              <button onClick={() => setAuthStep('phone')} className="text-xs font-bold text-[#6B2FA0] mb-6 flex items-center gap-1.5 cursor-pointer">
+                <ArrowLeft className="w-3.5 h-3.5 rtl:rotate-180" /> {lang === 'ar' ? 'تعديل الرقم' : 'Change Number'}
               </button>
               <h2 className="text-2xl font-extrabold text-[#1A1033] mb-1">
                 {lang === 'ar' ? 'تأكيد رمز التحقق' : 'Verify 6-Digit OTP'}
@@ -1007,8 +1007,8 @@ export default function App() {
         {authStep === 'kyc_wizard' && (
           <div className="flex-1 p-6 md:p-10 flex flex-col justify-between max-w-xl mx-auto w-full">
             <div>
-              <button onClick={() => setAuthStep('authenticated')} className="text-xs font-bold text-[#6B2FA0] mb-4 cursor-pointer">
-                ← {lang === 'ar' ? 'رجوع للملف الشخصي' : 'Back to App'}
+              <button onClick={() => setAuthStep('authenticated')} className="text-xs font-bold text-[#6B2FA0] mb-4 flex items-center gap-1.5 cursor-pointer">
+                <ArrowLeft className="w-3.5 h-3.5 rtl:rotate-180" /> {lang === 'ar' ? 'رجوع للملف الشخصي' : 'Back to App'}
               </button>
               <div className="flex items-center gap-2 mb-2">
                 <ShieldCheck className="w-6 h-6 text-[#6B2FA0]" />
@@ -1146,8 +1146,8 @@ export default function App() {
         {authStep === 'subscribe' && (
           <div className="flex-1 p-6 md:p-10 flex flex-col justify-between overflow-y-auto max-w-xl mx-auto w-full">
             <div>
-              <button onClick={() => setAuthStep('authenticated')} className="text-xs font-bold text-[#6B2FA0] mb-4 cursor-pointer">
-                ← {lang === 'ar' ? 'رجوع' : 'Back'}
+              <button onClick={() => setAuthStep('authenticated')} className="text-xs font-bold text-[#6B2FA0] mb-4 flex items-center gap-1.5 cursor-pointer">
+                <ArrowLeft className="w-3.5 h-3.5 rtl:rotate-180" /> {lang === 'ar' ? 'رجوع' : 'Back'}
               </button>
               <div
                 style={{ background: 'linear-gradient(135deg, #2E1A6E 0%, #6B2FA0 48%, #A42A9B 100%)' }}

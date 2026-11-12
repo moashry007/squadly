@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   X,
+  ArrowLeft,
   Shield,
   MapPin,
   Clock,
@@ -355,8 +356,13 @@ export const ActivityDetailModal: React.FC<ActivityModalsProps> = ({
             <button
               onClick={() => (subView === 'details' ? onClose() : setSubView('details'))}
               className="w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white font-bold cursor-pointer transition"
+              aria-label={subView === 'details' ? 'Close' : 'Back'}
             >
-              {subView === 'details' ? <X className="w-5 h-5" /> : '←'}
+              {subView === 'details' ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <ArrowLeft className="w-5 h-5 rtl:rotate-180" />
+              )}
             </button>
             <div className="flex items-center gap-2">
               {isConfirmed && (
