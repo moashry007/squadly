@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "squadly-33afc",
     "public": "dist",
     "ignore": [
       "firebase.json",

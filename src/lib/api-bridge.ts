@@ -2,7 +2,7 @@ import { Capacitor } from '@capacitor/core';
 
 // Default cloud backend (can be overridden by VITE_API_URL or localStorage)
 export const DEFAULT_CLOUD_BACKEND =
-  (import.meta as any).env?.VITE_API_URL || '';
+  (import.meta as any).env?.VITE_API_URL || 'https://squadly-api-rpe6.onrender.com';
 
 // Candidate addresses to reach the host PC's Express backend from Android
 const ANDROID_CANDIDATE_HOSTS = [
