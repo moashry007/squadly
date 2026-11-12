@@ -15,8 +15,12 @@
         <item name="android:background">@null</item>
     </style>
 
-
+    <!-- Squadly Brand Splash Theme (Android 12+ and AndroidX SplashScreen) -->
     <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
         <item name="android:background">@drawable/splash</item>
+        <item name="windowSplashScreenBackground">@color/splashBackground</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_squadly_splash</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/splashBackground</item>
+        <item name="postSplashScreenTheme">@style/AppTheme.NoActionBar</item>
     </style>
 </resources>

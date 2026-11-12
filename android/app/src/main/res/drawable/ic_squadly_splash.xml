@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="160dp"
+    android:height="160dp"
+    android:viewportWidth="160"
+    android:viewportHeight="160">
+    <!-- Emblem Rounded Rect Badge -->
+    <path
+        android:fillColor="#6B2FA0"
+        android:pathData="M58,36 h44 a22,22 0 0,1 22,22 v44 a22,22 0 0,1 -22,22 h-44 a22,22 0 0,1 -22,-22 v-44 a22,22 0 0,1 22,-22 z" />
+    
+    <!-- Bold White 'S' -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M92,54 c-3,-3 -8,-5 -14,-5 c-10,0 -16,6 -16,15 c0,9 6,13 16,16 l4,1 c8,3 12,6 12,11 c0,7 -7,11 -15,11 c-8,0 -14,-4 -17,-9 l7,-6 c2,4 5,6 10,6 c5,0 8,-3 8,-6 c0,-5 -5,-7 -13,-9 l-5,-2 c-8,-3 -13,-7 -13,-15 c0,-9 8,-15 19,-15 c7,0 13,2 18,7 z" />
+
+    <!-- Amber Gold Dot -->
+    <path
+        android:fillColor="#F5A524"
+        android:pathData="M106,104 m -7,0 a 7,7 0 1,0 14,0 a 7,7 0 1,0 -14,0" />
+</vector>
