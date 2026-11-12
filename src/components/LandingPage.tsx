@@ -111,9 +111,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <span className="text-xl font-black tracking-tight text-[#1A1033] dark:text-white">
                 Squadly<span className="text-[#F5A524]">.</span>
               </span>
-              <span className="hidden sm:inline-block ml-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-50 dark:bg-[#251747] text-[#6B2FA0] dark:text-[#C084FC] border border-purple-100 dark:border-purple-800/40">
-                Cairo &amp; Giza
-              </span>
             </div>
           </div>
 
@@ -210,7 +207,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
                 <button
                   onClick={onLaunchApp}
-                  className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-[#2E1A6E] via-[#6B2FA0] to-[#A42A9B] hover:opacity-95 text-white font-extrabold text-sm sm:text-base shadow-xl flex items-center justify-center gap-2.5 transition active:scale-98 cursor-pointer"
+                  className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-gradient-to-r from-[#2E1A6E] via-[#6B2FA0] to-[#A42A9B] hover:opacity-95 text-white font-extrabold text-sm sm:text-base shadow-xl flex items-center justify-center gap-2.5 transition active:scale-98 cursor-pointer"
                 >
                   <Zap className="w-5 h-5 text-[#F5A524]" />
                   <span>{lang === 'ar' ? 'ابدأ الاستخدام فوراً (Web App)' : 'Launch Web App Now'}</span>
@@ -219,11 +216,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 <a
                   href="https://squadly-api-rpe6.onrender.com/api/download/apk"
                   download="squadly-v1.1-debug.apk"
-                  className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-white dark:bg-[#1B1035] hover:bg-gray-50 dark:hover:bg-[#251747] border border-purple-200 dark:border-purple-800/40 text-[#1A1033] dark:text-white font-bold text-sm sm:text-base shadow-sm flex items-center justify-center gap-2.5 transition"
+                  className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-white dark:bg-[#1B1035] hover:bg-gray-50 dark:hover:bg-[#251747] border border-purple-200 dark:border-purple-800/40 text-[#1A1033] dark:text-white font-bold text-sm sm:text-base shadow-sm flex items-center justify-center gap-2.5 transition"
                 >
                   <Download className="w-5 h-5 text-[#6B2FA0] dark:text-[#C084FC]" />
-                  <span>{lang === 'ar' ? 'تحميل تطبيق أندرويد (APK)' : 'Download Android App (APK)'}</span>
+                  <span>{lang === 'ar' ? 'تحميل للأندرويد (APK)' : 'Download Android (APK)'}</span>
                 </a>
+
+                <div className="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-purple-50/70 dark:bg-white/5 border border-purple-200/80 dark:border-purple-800/30 text-gray-500 dark:text-gray-400 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 select-none shadow-xs">
+                  <span className="text-base">🍎</span>
+                  <span>{lang === 'ar' ? 'تطبيق iOS (قريباً)' : 'iOS App (Coming Soon)'}</span>
+                </div>
               </div>
 
               {/* Trust Badges Bar */}
@@ -517,8 +519,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           </h2>
           <p className="text-sm sm:text-base text-white/80 max-w-xl mx-auto mt-3">
             {lang === 'ar'
-              ? 'تطبيق الويب وتطبيق الأندرويد متصلان بنفس قاعدة البيانات السحابية الحية.'
-              : 'Our Web App and native Android App share the exact same live cloud database and verified network.'}
+              ? 'تطبيق الويب وتطبيق الأندرويد متصلان بنفس قاعدة البيانات السحابية الحية (وتطبيق iOS قريباً على App Store).'
+              : 'Our Web App and native Android App share the exact same live cloud database and verified network (iOS App coming soon on App Store!).'}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
@@ -538,6 +540,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <Download className="w-5 h-5 text-[#F5A524]" />
               <span>{lang === 'ar' ? 'تحميل تطبيق الأندرويد (APK)' : 'Download Android App (APK)'}</span>
             </a>
+
+            <div className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-white/10 border border-white/20 text-white/80 font-bold text-base flex items-center justify-center gap-2 select-none">
+              <span className="text-lg">🍎</span>
+              <span>{lang === 'ar' ? 'تطبيق iOS (قريباً)' : 'iOS App (Coming Soon)'}</span>
+            </div>
           </div>
         </div>
       </section>
@@ -555,12 +562,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </div>
 
             <div className="flex items-center gap-6">
-              <button onClick={onLaunchApp} className="hover:text-white transition">
-                {lang === 'ar' ? 'تشغيل التطبيق' : 'Launch App'}
-              </button>
-              <button onClick={onOpenAdmin} className="hover:text-white transition">
-                {lang === 'ar' ? 'بوابة الإدارة (Admin)' : 'Admin Portal'}
-              </button>
               <a href="tel:122" className="hover:text-red-400 transition text-red-400/90 font-bold">
                 Police 122
               </a>
@@ -572,7 +573,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500 text-[11px]">
             <div>
-              &copy; {new Date().getFullYear()} Squadly Inc. Greater Cairo &amp; Giza, Egypt. All rights reserved.
+              &copy; {new Date().getFullYear()} Squadly Inc. All rights reserved.
             </div>
             <div>
               Designed for verified sports, social hobbies &amp; community safety.
