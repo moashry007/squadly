@@ -3,11 +3,12 @@ import {
   Compass, PlusCircle, MessageSquare, User, Bell, ShieldAlert, CheckCircle2,
   MapPin, Calendar, Star, Search, Lock, Sparkles, ShieldCheck, AlertTriangle,
   LogOut, Globe, Phone, Mail, Camera, Trash2, Edit3, CreditCard, Gift, Navigation,
-  Smartphone, Users, X, Moon, Sun, ArrowLeft
+  Smartphone, Users, X, Moon, Sun, ArrowLeft, ExternalLink
 } from 'lucide-react';
 import { tMsg, Lang } from './i18n/messages';
 import { ActivityDetailModal } from './components/ActivityModals';
 import { AdminPanel } from './components/AdminPanel';
+import { LandingPage } from './components/LandingPage';
 import { CameraCaptureModal, ActionDialogModal, DialogConfig } from './components/HardwareModals';
 import { supabase, signOutOfSupabase } from './lib/supabase';
 import { ProtectedRoute, AdminProtectedRoute } from './components/ProtectedRoute';
@@ -21,9 +22,21 @@ export default function App() {
       ? 'dark'
       : 'light';
   });
-  const [routeMode, setRouteMode] = useState<'member' | 'admin'>(() =>
-    window.location.pathname.startsWith('/admin') || window.location.hash === '#admin' ? 'admin' : 'member'
-  );
+  const [routeMode, setRouteMode] = useState<'website' | 'member' | 'admin'>(() => {
+    if (typeof window !== 'undefined') {
+      if (window.location.pathname.startsWith('/admin') || window.location.hash === '#admin') return 'admin';
+      if (window.location.hash === '#app' || window.location.pathname.startsWith('/app')) return 'member';
+      if (localStorage.getItem('squadly_member_token')) return 'member';
+      if (
+        (window as any).Capacitor?.isNativePlatform?.() ||
+        window.location.protocol === 'capacitor:' ||
+        (window.location.hostname === 'localhost' && !window.location.port)
+      ) {
+        return 'member';
+      }
+    }
+    return 'website';
+  });
   const [memberToken, setMemberToken] = useState<string>(() => localStorage.getItem('squadly_member_token') || '');
 
   // Auth / Onboarding state
@@ -518,9 +531,17 @@ export default function App() {
 
   const unreadCount = notifications.filter(n => !n.is_read).length;
 
-  const switchRoute = (mode: 'member' | 'admin') => {
+  const switchRoute = (mode: 'website' | 'member' | 'admin') => {
     setRouteMode(mode);
-    window.history.pushState({}, '', mode === 'admin' ? '/admin' : '/');
+    if (typeof window !== 'undefined') {
+      if (mode === 'admin') {
+        window.history.pushState({}, '', '/#admin');
+      } else if (mode === 'member') {
+        window.history.pushState({}, '', '/#app');
+      } else {
+        window.history.pushState({}, '', '/');
+      }
+    }
   };
 
   if (routeMode === 'admin') {
@@ -554,6 +575,24 @@ export default function App() {
           />
         </AdminProtectedRoute>
         <ActionDialogModal dialog={dialogConfig} onClose={() => setDialogConfig(null)} />
+      </div>
+    );
+  }
+
+  if (routeMode === 'website') {
+    return (
+      <div dir={lang === 'ar' ? 'rtl' : 'ltr'} className="min-h-screen bg-[#FAF7FD]">
+        {toast && (
+          <div className="fixed top-5 left-1/2 -translate-x-1/2 z-[100] max-w-md w-[92%] px-4 py-3 rounded-2xl shadow-2xl border flex items-center gap-3 bg-[#1A1033] text-white border-white/15">
+            <span className="text-xs font-bold flex-1">{toast.msg}</span>
+          </div>
+        )}
+        <LandingPage
+          lang={lang}
+          onToggleLang={toggleLang}
+          onLaunchApp={() => switchRoute('member')}
+          onOpenAdmin={() => switchRoute('admin')}
+        />
       </div>
     );
   }
@@ -612,10 +651,16 @@ export default function App() {
               </div>
               <div className="flex items-center gap-2">
                 <button
+                  onClick={() => switchRoute('website')}
+                  className="px-3.5 py-2 rounded-full bg-white/20 hover:bg-white/30 text-white text-xs font-extrabold flex items-center gap-1.5 border border-white/25 backdrop-blur cursor-pointer shadow-sm transition"
+                >
+                  <Globe className="w-3.5 h-3.5 text-[#F5A524]" /> {lang === 'ar' ? 'الموقع' : 'Website'}
+                </button>
+                <button
                   onClick={toggleLang}
                   className="px-3.5 py-2 rounded-full bg-white/20 hover:bg-white/30 text-white text-xs font-extrabold flex items-center gap-1.5 border border-white/25 backdrop-blur cursor-pointer shadow-sm"
                 >
-                  <Globe className="w-3.5 h-3.5 text-[#F5A524]" /> {lang === 'en' ? 'العربية' : 'English'}
+                  {lang === 'en' ? 'العربية' : 'English'}
                 </button>
               </div>
             </div>
@@ -1901,6 +1946,25 @@ export default function App() {
                             ? (lang === 'ar' ? 'تم التحديث ✓' : 'Synced ✓')
                             : (lang === 'ar' ? 'مزامنة GPS' : 'Sync GPS')}
                         </span>
+                      </button>
+                    </div>
+
+                    {/* Visit Marketing Website */}
+                    <div className="flex items-center justify-between py-1 border-t border-gray-100 pt-2">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-xl bg-purple-50 text-[#6B2FA0] flex items-center justify-center">
+                          <ExternalLink className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-[#1A1033]">{lang === 'ar' ? 'موقع سكوادلي التعريفي' : 'Squadly Website'}</p>
+                          <p className="text-[10px] text-gray-500">{lang === 'ar' ? 'الصفحة الرئيسية والمميزات وتحميل APK' : 'Landing page, features & APK'}</p>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => switchRoute('website')}
+                        className="px-3.5 py-1.5 rounded-xl text-xs font-extrabold bg-purple-50 hover:bg-purple-100 text-[#6B2FA0] border border-purple-200 flex items-center gap-1.5 transition cursor-pointer"
+                      >
+                        <span>{lang === 'ar' ? 'زيارة الموقع' : 'View Site'}</span>
                       </button>
                     </div>
                   </div>

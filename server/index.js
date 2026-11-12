@@ -2088,6 +2088,16 @@ app.post('/api/admin/parameters/:key', (req, res) => {
   res.json({ ok: true });
 });
 
+// UC-APK: Download Android APK
+app.get('/api/download/apk', (req, res) => {
+  const apkPath = path.join(__dirname, '..', 'squadly-v1.1-debug.apk');
+  if (fs.existsSync(apkPath)) {
+    res.download(apkPath, 'squadly-v1.1-debug.apk');
+  } else {
+    res.redirect('https://github.com/moashry007/squadly/releases');
+  }
+});
+
 // SPA Fallback for client-side routes (/admin, /activities, etc.)
 app.get('*', (req, res) => {
   const indexFile = path.join(__dirname, '..', 'dist', 'index.html');
