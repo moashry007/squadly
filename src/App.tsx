@@ -634,15 +634,17 @@ export default function App() {
       )}
 
       {/* Responsive Web & Mobile App Container */}
-      <div className="flex-1 flex flex-col max-w-5xl w-full mx-auto bg-[#FCF7F3] min-h-screen shadow-sm border-x border-purple-900/5 relative">
+      <div className="flex-1 flex flex-col w-full bg-[#FCF7F3] dark:bg-[#0D081D] min-h-screen relative">
         {/* SPLASH / ONBOARDING SCREEN (UC-01 / UC-02) */}
         {authStep === 'splash' && (
           <div
             style={{ background: 'linear-gradient(135deg, #2E1A6E 0%, #6B2FA0 48%, #A42A9B 82%, #C4407A 100%)' }}
-            className="flex-1 bg-[#2E1A6E] squadly-gradient text-white p-6 md:p-12 flex flex-col justify-between relative overflow-hidden"
+            className="flex-1 w-full bg-[#2E1A6E] squadly-gradient text-white p-6 sm:p-10 md:p-14 lg:p-16 flex flex-col justify-between relative overflow-hidden min-h-screen"
           >
-            <div className="absolute -right-16 -top-16 w-72 h-72 rounded-full bg-[#F5A524]/20 blur-2xl pointer-events-none" />
-            <div className="flex items-center justify-between z-10">
+            <div className="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-[#F5A524]/20 blur-3xl pointer-events-none" />
+            <div className="absolute -left-20 -bottom-20 w-96 h-96 rounded-full bg-[#C4407A]/25 blur-3xl pointer-events-none" />
+
+            <div className="w-full max-w-7xl mx-auto flex items-center justify-between z-10">
               <div className="flex items-center gap-2.5">
                 <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur flex items-center justify-center font-extrabold text-xl border border-white/30 text-white shadow">
                   S<span className="text-[#F5A524]">.</span>
@@ -667,51 +669,51 @@ export default function App() {
               </div>
             </div>
 
-            <div className="my-auto py-10 z-10 max-w-2xl">
+            <div className="my-auto py-10 z-10 w-full max-w-7xl mx-auto">
               <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#1A1033]/50 text-[#F5A524] text-xs font-extrabold uppercase tracking-wider mb-5 border border-[#F5A524]/40 shadow-sm">
                 <Sparkles className="w-3.5 h-3.5" /> {lang === 'ar' ? 'مجتمع الهوايات الموثق في مصر' : "Egypt's Verified Hobby Community"}
               </span>
-              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4 text-white drop-shadow-sm">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-white drop-shadow-sm max-w-4xl">
                 {lang === 'ar' ? 'ابحث عن مجموعتك. عش شغفك بأمان.' : 'Find Your Squad. Share Your Passion Safely.'}
               </h1>
-              <p className="text-sm md:text-base text-white/95 font-medium leading-relaxed mb-8">
+              <p className="text-sm md:text-base lg:text-lg text-white/95 font-medium leading-relaxed mb-8 max-w-3xl">
                 {lang === 'ar'
                   ? 'انضم إلى أنشطة جماعية حقيقية من البادل والجري إلى الألعاب اللوحية — جميع الأعضاء موثقون بالبطاقة الشخصية والسيلفي المباشر.'
-                  : 'Discover curated small-group activities across Greater Cairo from Padel & Running to Strategy Board Games — every organizer and participant is KYC ID & Live-Selfie verified.'}
+                  : 'Discover curated small-group activities from Padel & Running to Strategy Board Games — every organizer and participant is KYC ID & Live-Selfie verified.'}
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-                <div className="bg-[#1A1033]/45 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-md">
-                  <ShieldCheck className="w-6 h-6 text-[#F5A524] mb-1.5" />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mb-10">
+                <div className="bg-[#1A1033]/45 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 shadow-md">
+                  <ShieldCheck className="w-6 h-6 text-[#F5A524] mb-2" />
                   <p className="text-sm font-extrabold text-white">{lang === 'ar' ? 'توثيق الهوية' : '100% KYC Verified'}</p>
-                  <p className="text-xs text-white/90 mt-0.5">{lang === 'ar' ? 'بطاقة شخصية + سيلفي حي' : 'National ID + Live Selfie'}</p>
+                  <p className="text-xs text-white/90 mt-1">{lang === 'ar' ? 'بطاقة شخصية + سيلفي حي' : 'National ID + Live Selfie'}</p>
                 </div>
-                <div className="bg-[#1A1033]/45 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-md">
-                  <Users className="w-6 h-6 text-[#F5A524] mb-1.5" />
+                <div className="bg-[#1A1033]/45 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 shadow-md">
+                  <Users className="w-6 h-6 text-[#F5A524] mb-2" />
                   <p className="text-sm font-extrabold text-white">{lang === 'ar' ? 'مجموعات متوازنة' : 'Small Squads'}</p>
-                  <p className="text-xs text-white/90 mt-0.5">{lang === 'ar' ? 'تقييم متبادل وحضور بـ QR' : 'Dynamic QR & Mutual Rating'}</p>
+                  <p className="text-xs text-white/90 mt-1">{lang === 'ar' ? 'تقييم متبادل وحضور بـ QR' : 'Dynamic QR & Mutual Rating'}</p>
                 </div>
-                <div className="bg-[#1A1033]/45 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-md">
-                  <ShieldAlert className="w-6 h-6 text-[#F5A524] mb-1.5" />
+                <div className="bg-[#1A1033]/45 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 shadow-md">
+                  <ShieldAlert className="w-6 h-6 text-[#F5A524] mb-2" />
                   <p className="text-sm font-extrabold text-white">{lang === 'ar' ? 'طوارئ SOS' : 'Live SOS Shield'}</p>
-                  <p className="text-xs text-white/90 mt-0.5">{lang === 'ar' ? 'حماية فورية طوال النشاط' : '6am–10pm Verified Venues'}</p>
+                  <p className="text-xs text-white/90 mt-1">{lang === 'ar' ? 'حماية فورية طوال النشاط' : '6am–10pm Verified Venues'}</p>
                 </div>
               </div>
-            </div>
 
-            <div className="space-y-3 z-10 max-w-md w-full mx-auto">
-              <button
-                onClick={() => { setIsRegisterMode(true); setAuthStep('phone'); }}
-                className="w-full py-4 rounded-2xl bg-[#F5A524] hover:bg-[#e0941b] text-[#1A1033] font-extrabold text-sm shadow-xl transition cursor-pointer"
-              >
-                {lang === 'ar' ? 'إنشاء حساب جديد (+18)' : 'Create New Account (18+)'}
-              </button>
-              <button
-                onClick={() => { setIsRegisterMode(false); setAuthStep('phone'); }}
-                className="w-full py-3.5 rounded-2xl bg-[#1A1033]/60 hover:bg-[#1A1033]/85 text-white font-extrabold text-sm border border-white/35 transition cursor-pointer shadow-lg"
-              >
-                {lang === 'ar' ? 'تسجيل الدخول برقم الموبايل' : 'Sign In with Egyptian Mobile'}
-              </button>
+              <div className="flex flex-col sm:flex-row items-center gap-3.5 max-w-xl">
+                <button
+                  onClick={() => { setIsRegisterMode(true); setAuthStep('phone'); }}
+                  className="w-full sm:w-auto flex-1 py-4 px-8 rounded-2xl bg-[#F5A524] hover:bg-[#e0941b] text-[#1A1033] font-extrabold text-sm shadow-xl transition cursor-pointer"
+                >
+                  {lang === 'ar' ? 'إنشاء حساب جديد (+18)' : 'Create New Account (18+)'}
+                </button>
+                <button
+                  onClick={() => { setIsRegisterMode(false); setAuthStep('phone'); }}
+                  className="w-full sm:w-auto flex-1 py-4 px-8 rounded-2xl bg-[#1A1033]/60 hover:bg-[#1A1033]/85 text-white font-extrabold text-sm border border-white/35 transition cursor-pointer shadow-lg"
+                >
+                  {lang === 'ar' ? 'تسجيل الدخول برقم الموبايل' : 'Sign In with Egyptian Mobile'}
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -1382,7 +1384,7 @@ export default function App() {
             <main className="flex-1 overflow-y-auto pb-24">
               {/* TAB 1: DISCOVER FEED (UC-13 to UC-17) */}
               {memberTab === 'discover' && (
-                <div className="p-4 md:p-8 space-y-4">
+                <div className="p-4 md:p-8 space-y-4 max-w-7xl mx-auto w-full">
                   {/* Search Input (UC-15) */}
                   <div className="relative">
                     <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -1463,7 +1465,7 @@ export default function App() {
                       </button>
                     </div>
                   ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                       {filteredActivities.map(act => (
                         <div
                           key={act.id}
@@ -1549,7 +1551,7 @@ export default function App() {
 
               {/* TAB 2: MY SQUADS & GROUP CHATS */}
               {memberTab === 'my_squads' && (
-                <div className="p-4 md:p-8 space-y-4">
+                <div className="p-4 md:p-8 space-y-4 max-w-7xl mx-auto w-full">
                   <div className="flex items-center justify-between">
                     <h2 className="text-lg font-extrabold text-[#1A1033]">
                       {lang === 'ar' ? 'أنشطتي ومحادثات المجموعات' : 'My Squads & Group Chats'}
@@ -1571,7 +1573,7 @@ export default function App() {
                       </p>
                     </div>
                   ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                       {activities.filter(a => a.viewerParticipation || a.organizer_id === user.id).map(act => (
                         <div key={act.id} className="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm space-y-3 flex flex-col justify-between">
                           <div className="flex items-center justify-between">
@@ -2015,71 +2017,73 @@ export default function App() {
               )}
             </main>
 
-            {/* Bottom Member Navigation Bar (5-Column Native Mobile Layout) */}
-            <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 max-w-5xl w-full bg-white/95 backdrop-blur-md border-t border-purple-100 px-2 pt-2 pb-4 sm:pb-3 grid grid-cols-5 items-end z-30 shadow-[0_-4px_20px_rgba(26,16,51,0.06)]">
-              <button
-                onClick={() => setMemberTab('discover')}
-                className={`flex flex-col items-center justify-center gap-1 text-[11px] font-extrabold cursor-pointer transition ${
-                  memberTab === 'discover' ? 'text-[#2E1A6E]' : 'text-gray-400 hover:text-gray-600'
-                }`}
-              >
-                <Compass className={`w-5 h-5 ${memberTab === 'discover' ? 'text-[#6B2FA0]' : ''}`} />
-                <span className="whitespace-nowrap leading-none">{lang === 'ar' ? 'استكشاف' : 'Discover'}</span>
-              </button>
-
-              <button
-                onClick={() => setMemberTab('my_squads')}
-                className={`flex flex-col items-center justify-center gap-1 text-[11px] font-extrabold cursor-pointer transition ${
-                  memberTab === 'my_squads' ? 'text-[#2E1A6E]' : 'text-gray-400 hover:text-gray-600'
-                }`}
-              >
-                <MessageSquare className={`w-5 h-5 ${memberTab === 'my_squads' ? 'text-[#6B2FA0]' : ''}`} />
-                <span className="whitespace-nowrap leading-none">{lang === 'ar' ? 'مجموعاتي' : 'My Squads'}</span>
-              </button>
-
-              {/* Center Host Activity Button with Aligned Baseline Label */}
-              <button
-                onClick={() => setShowCreateModal(true)}
-                className="flex flex-col items-center justify-center gap-1 cursor-pointer group"
-                title="Host Activity"
-              >
-                <div
-                  style={{ background: 'linear-gradient(135deg, #2E1A6E 0%, #6B2FA0 50%, #A42A9B 100%)' }}
-                  className="w-11 h-11 -mt-5 rounded-2xl bg-[#2E1A6E] squadly-gradient text-white flex items-center justify-center shadow-md border-2 border-white group-hover:scale-105 transition"
+            {/* Bottom Member Navigation Bar (Full Width Fluid with Centered Controls) */}
+            <nav className="fixed bottom-0 left-0 right-0 w-full bg-white/95 dark:bg-[#18102E]/95 backdrop-blur-md border-t border-purple-100 dark:border-purple-900/40 px-3 pt-2 pb-4 sm:pb-3 z-30 shadow-[0_-4px_20px_rgba(26,16,51,0.06)]">
+              <div className="max-w-5xl mx-auto grid grid-cols-5 items-end">
+                <button
+                  onClick={() => setMemberTab('discover')}
+                  className={`flex flex-col items-center justify-center gap-1 text-[11px] font-extrabold cursor-pointer transition ${
+                    memberTab === 'discover' ? 'text-[#2E1A6E] dark:text-[#C084FC]' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
+                  }`}
                 >
-                  <PlusCircle className="w-5 h-5 text-[#F5A524]" />
-                </div>
-                <span className="text-[11px] font-extrabold text-[#2E1A6E] whitespace-nowrap leading-none">
-                  {lang === 'ar' ? 'إنشاء' : 'Host'}
-                </span>
-              </button>
+                  <Compass className={`w-5 h-5 ${memberTab === 'discover' ? 'text-[#6B2FA0] dark:text-[#C084FC]' : ''}`} />
+                  <span className="whitespace-nowrap leading-none">{lang === 'ar' ? 'استكشاف' : 'Discover'}</span>
+                </button>
 
-              <button
-                onClick={() => setMemberTab('notifications')}
-                className={`relative flex flex-col items-center justify-center gap-1 text-[11px] font-extrabold cursor-pointer transition ${
-                  memberTab === 'notifications' ? 'text-[#2E1A6E]' : 'text-gray-400 hover:text-gray-600'
-                }`}
-              >
-                <div className="relative">
-                  <Bell className={`w-5 h-5 ${memberTab === 'notifications' ? 'text-[#6B2FA0]' : ''}`} />
-                  {unreadCount > 0 && (
-                    <span className="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 rounded-full bg-[#D93B3B] text-white text-[9px] font-extrabold flex items-center justify-center border border-white">
-                      {unreadCount}
-                    </span>
-                  )}
-                </div>
-                <span className="whitespace-nowrap leading-none">{lang === 'ar' ? 'الإشعارات' : 'Alerts'}</span>
-              </button>
+                <button
+                  onClick={() => setMemberTab('my_squads')}
+                  className={`flex flex-col items-center justify-center gap-1 text-[11px] font-extrabold cursor-pointer transition ${
+                    memberTab === 'my_squads' ? 'text-[#2E1A6E] dark:text-[#C084FC]' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
+                  }`}
+                >
+                  <MessageSquare className={`w-5 h-5 ${memberTab === 'my_squads' ? 'text-[#6B2FA0] dark:text-[#C084FC]' : ''}`} />
+                  <span className="whitespace-nowrap leading-none">{lang === 'ar' ? 'مجموعاتي' : 'My Squads'}</span>
+                </button>
 
-              <button
-                onClick={() => setMemberTab('profile')}
-                className={`flex flex-col items-center justify-center gap-1 text-[11px] font-extrabold cursor-pointer transition ${
-                  memberTab === 'profile' ? 'text-[#2E1A6E]' : 'text-gray-400 hover:text-gray-600'
-                }`}
-              >
-                <User className={`w-5 h-5 ${memberTab === 'profile' ? 'text-[#6B2FA0]' : ''}`} />
-                <span className="whitespace-nowrap leading-none">{lang === 'ar' ? 'حسابي' : 'Profile'}</span>
-              </button>
+                {/* Center Host Activity Button with Aligned Baseline Label */}
+                <button
+                  onClick={() => setShowCreateModal(true)}
+                  className="flex flex-col items-center justify-center gap-1 cursor-pointer group"
+                  title="Host Activity"
+                >
+                  <div
+                    style={{ background: 'linear-gradient(135deg, #2E1A6E 0%, #6B2FA0 50%, #A42A9B 100%)' }}
+                    className="w-11 h-11 -mt-5 rounded-2xl bg-[#2E1A6E] squadly-gradient text-white flex items-center justify-center shadow-md border-2 border-white group-hover:scale-105 transition"
+                  >
+                    <PlusCircle className="w-5 h-5 text-[#F5A524]" />
+                  </div>
+                  <span className="text-[11px] font-extrabold text-[#2E1A6E] dark:text-[#C084FC] whitespace-nowrap leading-none">
+                    {lang === 'ar' ? 'إنشاء' : 'Host'}
+                  </span>
+                </button>
+
+                <button
+                  onClick={() => setMemberTab('notifications')}
+                  className={`relative flex flex-col items-center justify-center gap-1 text-[11px] font-extrabold cursor-pointer transition ${
+                    memberTab === 'notifications' ? 'text-[#2E1A6E] dark:text-[#C084FC]' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
+                  }`}
+                >
+                  <div className="relative">
+                    <Bell className={`w-5 h-5 ${memberTab === 'notifications' ? 'text-[#6B2FA0] dark:text-[#C084FC]' : ''}`} />
+                    {unreadCount > 0 && (
+                      <span className="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 rounded-full bg-[#D93B3B] text-white text-[9px] font-extrabold flex items-center justify-center border border-white">
+                        {unreadCount}
+                      </span>
+                    )}
+                  </div>
+                  <span className="whitespace-nowrap leading-none">{lang === 'ar' ? 'الإشعارات' : 'Alerts'}</span>
+                </button>
+
+                <button
+                  onClick={() => setMemberTab('profile')}
+                  className={`flex flex-col items-center justify-center gap-1 text-[11px] font-extrabold cursor-pointer transition ${
+                    memberTab === 'profile' ? 'text-[#2E1A6E] dark:text-[#C084FC]' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
+                  }`}
+                >
+                  <User className={`w-5 h-5 ${memberTab === 'profile' ? 'text-[#6B2FA0] dark:text-[#C084FC]' : ''}`} />
+                  <span className="whitespace-nowrap leading-none">{lang === 'ar' ? 'حسابي' : 'Profile'}</span>
+                </button>
+              </div>
             </nav>
           </>
         </ProtectedRoute>
