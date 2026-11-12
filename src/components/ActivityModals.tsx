@@ -1041,15 +1041,26 @@ export const ActivityDetailModal: React.FC<ActivityModalsProps> = ({
                     onMouseLeave={stopSosHold}
                     onTouchStart={startSosHold}
                     onTouchEnd={stopSosHold}
-                    className="w-full py-4 rounded-full bg-[#D93B3B] text-white font-black text-sm shadow-lg relative overflow-hidden select-none"
+                    className="w-full py-3.5 px-4 rounded-full bg-[#D93B3B] hover:bg-red-700 active:scale-98 text-white shadow-lg relative overflow-hidden select-none transition-all cursor-pointer"
                   >
-                    <span className="relative z-10">
-                      {holdProgress > 0
-                        ? `Holding... ${Math.min(3, Math.ceil((holdProgress / 100) * 3))}s`
-                        : 'HOLD 3 SECONDS: Alert Squadly & Emergency Contact'}
+                    <span className="relative z-10 flex flex-col items-center justify-center text-center">
+                      {holdProgress > 0 ? (
+                        <span className="text-xs sm:text-sm font-black tracking-wide flex items-center justify-center gap-1.5 animate-pulse">
+                          🚨 Holding... {Math.min(3, Math.ceil((holdProgress / 100) * 3))}s
+                        </span>
+                      ) : (
+                        <>
+                          <span className="text-xs font-black tracking-wider uppercase">
+                            HOLD 3 SECONDS
+                          </span>
+                          <span className="text-[11px] font-semibold opacity-90 leading-tight mt-0.5">
+                            Alert Squadly &amp; Emergency Contact
+                          </span>
+                        </>
+                      )}
                     </span>
                     <div
-                      className="absolute inset-y-0 left-0 bg-black/25 transition-all"
+                      className="absolute inset-y-0 left-0 bg-black/30 transition-all"
                       style={{ width: `${holdProgress}%` }}
                     />
                   </button>

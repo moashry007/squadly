@@ -170,29 +170,31 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
           <canvas ref={canvasRef} className="hidden" />
 
           {!previewUrl ? (
-            <div className="flex items-center justify-between gap-2">
-              <button
-                type="button"
-                onClick={() => setFacingMode(facingMode === 'user' ? 'environment' : 'user')}
-                className="px-3.5 py-2.5 rounded-full bg-gray-100 text-xs font-bold flex items-center gap-1.5 text-[#1A1033]"
-              >
-                <RefreshCw className="w-3.5 h-3.5" /> Flip Camera
-              </button>
-
+            <div className="flex flex-col gap-2.5 pt-1">
               <button
                 type="button"
                 onClick={captureFrame}
-                className="flex-1 py-3 rounded-full sq-btn-gradient text-white font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-md"
+                className="w-full py-3.5 rounded-full sq-btn-gradient text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md active:scale-98 transition-all"
               >
-                <Camera className="w-4 h-4" /> Capture Live Photo
+                <Camera className="w-4 h-4 sm:w-5 sm:h-5" /> Capture Live Photo
               </button>
 
-              {allowGallery && (
-                <label className="px-3.5 py-2.5 rounded-full bg-purple-50 text-[#6B2FA0] text-xs font-bold cursor-pointer flex items-center gap-1">
-                  <Upload className="w-3.5 h-3.5" /> Gallery
-                  <input type="file" accept="image/jpeg,image/png" onChange={handleFileUpload} className="hidden" />
-                </label>
-              )}
+              <div className="flex items-center justify-between gap-2">
+                <button
+                  type="button"
+                  onClick={() => setFacingMode(facingMode === 'user' ? 'environment' : 'user')}
+                  className="flex-1 py-2.5 px-3 rounded-full bg-gray-100 hover:bg-gray-200 text-xs font-bold flex items-center justify-center gap-1.5 text-[#1A1033] transition"
+                >
+                  <RefreshCw className="w-3.5 h-3.5" /> Flip Camera
+                </button>
+
+                {allowGallery && (
+                  <label className="flex-1 py-2.5 px-3 rounded-full bg-purple-50 hover:bg-purple-100 text-[#6B2FA0] text-xs font-bold cursor-pointer flex items-center justify-center gap-1.5 transition">
+                    <Upload className="w-3.5 h-3.5" /> Gallery
+                    <input type="file" accept="image/jpeg,image/png" onChange={handleFileUpload} className="hidden" />
+                  </label>
+                )}
+              </div>
             </div>
           ) : (
             <div className="flex gap-2">

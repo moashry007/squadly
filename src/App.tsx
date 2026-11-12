@@ -1673,17 +1673,29 @@ export default function App() {
 
                     {/* Stats & Reliability Score */}
                     <div className="grid grid-cols-3 gap-2 pt-2 border-t border-gray-100 dark:border-purple-900/30 text-center">
-                      <div className="bg-[#FCF7F3] dark:bg-[#241644] p-2.5 rounded-2xl border border-purple-100/40 dark:border-purple-900/20">
-                        <p className="text-base font-extrabold text-[#2E1A6E] dark:text-[#F5A524]">⭐ {Number(user.rating_avg || 5).toFixed(1)}</p>
-                        <p className="text-[10px] text-gray-500 dark:text-gray-400 font-bold">{user.rating_count} Ratings</p>
+                      <div className="bg-[#FCF7F3] dark:bg-[#241644] py-2.5 px-1.5 rounded-2xl border border-purple-100/40 dark:border-purple-900/20 flex flex-col items-center justify-center h-full min-h-[72px]">
+                        <span className="text-base font-extrabold text-[#2E1A6E] dark:text-[#F5A524] flex items-center justify-center gap-1 leading-tight">
+                          ⭐ {Number(user.rating_avg || 5).toFixed(1)}
+                        </span>
+                        <span className="text-[10px] text-gray-500 dark:text-gray-400 font-bold truncate mt-1">
+                          {user.rating_count} {lang === 'ar' ? 'تقييم' : 'Ratings'}
+                        </span>
                       </div>
-                      <div className="bg-[#FCF7F3] dark:bg-[#241644] p-2.5 rounded-2xl border border-purple-100/40 dark:border-purple-900/20">
-                        <p className="text-base font-extrabold text-[#2E9E6A] dark:text-[#4ADE80]">{user.activities_attended} Attended</p>
-                        <p className="text-[10px] text-gray-500 dark:text-gray-400 font-bold">{user.participant_strikes} Strikes</p>
+                      <div className="bg-[#FCF7F3] dark:bg-[#241644] py-2.5 px-1.5 rounded-2xl border border-purple-100/40 dark:border-purple-900/20 flex flex-col items-center justify-center h-full min-h-[72px]">
+                        <span className="text-base font-extrabold text-[#2E9E6A] dark:text-[#4ADE80] leading-tight">
+                          {user.activities_attended}
+                        </span>
+                        <span className="text-[10px] text-gray-500 dark:text-gray-400 font-bold truncate mt-1">
+                          {lang === 'ar' ? 'أنشطة' : 'Attended'} • {user.participant_strikes}s
+                        </span>
                       </div>
-                      <div className="bg-[#FCF7F3] dark:bg-[#241644] p-2.5 rounded-2xl border border-purple-100/40 dark:border-purple-900/20">
-                        <p className="text-base font-extrabold text-[#A42A9B] dark:text-[#F472B6]">{user.subscription_status}</p>
-                        <p className="text-[10px] text-gray-500 dark:text-gray-400 font-bold">Membership</p>
+                      <div className="bg-[#FCF7F3] dark:bg-[#241644] py-2.5 px-1.5 rounded-2xl border border-purple-100/40 dark:border-purple-900/20 flex flex-col items-center justify-center h-full min-h-[72px]">
+                        <span className="text-base font-extrabold text-[#A42A9B] dark:text-[#F472B6] truncate leading-tight">
+                          {user.subscription_status || 'Active'}
+                        </span>
+                        <span className="text-[10px] text-gray-500 dark:text-gray-400 font-bold truncate mt-1">
+                          {lang === 'ar' ? 'العضوية' : 'Membership'}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -2105,60 +2117,71 @@ export default function App() {
                   />
                 </div>
 
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="font-bold text-gray-700 block mb-1">Date</label>
+                    <label className="text-xs font-bold text-gray-700 dark:text-gray-300 block mb-1">
+                      {lang === 'ar' ? 'التاريخ' : 'Date'}
+                    </label>
                     <input
                       type="date"
                       value={createForm.date}
                       onChange={e => setCreateForm({ ...createForm, date: e.target.value })}
-                      className="w-full rounded-xl border border-gray-200 px-2.5 py-2"
+                      className="w-full rounded-xl border border-gray-200 dark:border-purple-900/40 px-3 py-2.5 text-xs sm:text-sm bg-white dark:bg-[#18102E] text-gray-800 dark:text-gray-100"
                     />
                   </div>
                   <div>
-                    <label className="font-bold text-gray-700 block mb-1">Time (06:00-20:30)</label>
+                    <label className="text-xs font-bold text-gray-700 dark:text-gray-300 block mb-1">
+                      {lang === 'ar' ? 'الوقت (06:00-20:30)' : 'Time (06:00–20:30)'}
+                    </label>
                     <input
                       type="time"
                       value={createForm.startTime}
                       onChange={e => setCreateForm({ ...createForm, startTime: e.target.value })}
-                      className="w-full rounded-xl border border-gray-200 px-2.5 py-2"
+                      className="w-full rounded-xl border border-gray-200 dark:border-purple-900/40 px-3 py-2.5 text-xs sm:text-sm bg-white dark:bg-[#18102E] text-gray-800 dark:text-gray-100"
                     />
                   </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="font-bold text-gray-700 block mb-1">Total Slots</label>
+                    <label className="text-xs font-bold text-gray-700 dark:text-gray-300 block mb-1">
+                      {lang === 'ar' ? 'عدد المقاعد (3-25)' : 'Total Slots (3–25)'}
+                    </label>
                     <input
                       type="number"
                       min={3}
                       max={25}
                       value={createForm.totalSlots}
                       onChange={e => setCreateForm({ ...createForm, totalSlots: Number(e.target.value) })}
-                      className="w-full rounded-xl border border-gray-200 px-2.5 py-2"
+                      className="w-full rounded-xl border border-gray-200 dark:border-purple-900/40 px-3 py-2.5 text-xs sm:text-sm bg-white dark:bg-[#18102E] text-gray-800 dark:text-gray-100"
                     />
                   </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="font-bold text-gray-700 block mb-1">Venue Cost Share (EGP)</label>
+                    <label className="text-xs font-bold text-gray-700 dark:text-gray-300 block mb-1">
+                      {lang === 'ar' ? 'تكلفة المكان (ج.م)' : 'Cost Share (EGP)'}
+                    </label>
                     <input
                       type="number"
                       min={0}
                       value={createForm.feeAmount}
                       onChange={e => setCreateForm({ ...createForm, feeAmount: Number(e.target.value), feeRequired: Number(e.target.value) > 0 })}
-                      className="w-full rounded-xl border border-gray-200 px-3 py-2"
+                      className="w-full rounded-xl border border-gray-200 dark:border-purple-900/40 px-3 py-2.5 text-xs sm:text-sm bg-white dark:bg-[#18102E] text-gray-800 dark:text-gray-100"
                     />
                   </div>
-                  <div>
-                    <label className="font-bold text-gray-700 block mb-1">Join Mode</label>
-                    <select
-                      value={createForm.joinMode}
-                      onChange={e => setCreateForm({ ...createForm, joinMode: e.target.value })}
-                      className="w-full rounded-xl border border-gray-200 px-3 py-2"
-                    >
-                      <option value="Instant">Instant Join</option>
-                      <option value="Approval">Organizer Approval</option>
-                    </select>
-                  </div>
+                </div>
+
+                <div>
+                  <label className="text-xs font-bold text-gray-700 dark:text-gray-300 block mb-1">
+                    {lang === 'ar' ? 'طريقة الانضمام' : 'Join Mode'}
+                  </label>
+                  <select
+                    value={createForm.joinMode}
+                    onChange={e => setCreateForm({ ...createForm, joinMode: e.target.value })}
+                    className="w-full rounded-xl border border-gray-200 dark:border-purple-900/40 px-3 py-2.5 text-xs sm:text-sm bg-white dark:bg-[#18102E] text-gray-800 dark:text-gray-100"
+                  >
+                    <option value="Instant">{lang === 'ar' ? 'انضمام فوري (Instant Join)' : 'Instant Join'}</option>
+                    <option value="Approval">{lang === 'ar' ? 'بموافقة المنظم (Approval)' : 'Organizer Approval'}</option>
+                  </select>
                 </div>
               </div>
 
