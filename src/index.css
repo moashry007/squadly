@@ -1,0 +1,430 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --sq-indigo: #2E1A6E;
+    --sq-purple: #6B2FA0;
+    --sq-magenta: #A42A9B;
+    --sq-rose: #C4407A;
+    --sq-orange: #F5A524;
+    --sq-bg: #FCF7F3;
+    --sq-ink: #1A1033;
+    --sq-red: #D93B3B;
+    --sq-green: #2E9E6A;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', 'Cairo', system-ui, -apple-system, sans-serif;
+    background-color: #FCF7F3;
+    color: #1A1033;
+  }
+
+  [dir="rtl"] body,
+  [dir="rtl"] {
+    font-family: 'Cairo', 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+.sq-hero-gradient,
+.squadly-gradient {
+  background-color: #2E1A6E;
+  background-image: linear-gradient(135deg, #2E1A6E 0%, #6B2FA0 45%, #A42A9B 78%, #C4407A 100%);
+  color: #FFFFFF;
+}
+
+.sq-btn-gradient {
+  background-color: #6B2FA0;
+  background-image: linear-gradient(90deg, #2E1A6E 0%, #6B2FA0 50%, #A42A9B 100%);
+  color: #FFFFFF;
+}
+
+.sq-btn-gradient:hover {
+  filter: brightness(1.06);
+}
+
+.sq-card {
+  background: #FFFFFF;
+  border-radius: 22px;
+  box-shadow: 0 8px 28px -6px rgba(26, 16, 51, 0.06), 0 2px 6px -1px rgba(26, 16, 51, 0.04);
+}
+
+/* ============================================================================
+   Squadly Thin Accent Scrollbars (Universal Light & Dark Mode)
+   ============================================================================ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(107, 47, 160, 0.4) transparent;
+}
+
+html.dark,
+html.dark * {
+  scrollbar-color: rgba(164, 42, 155, 0.55) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(107, 47, 160, 0.35);
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(107, 47, 160, 0.7);
+}
+
+*::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+html.dark *::-webkit-scrollbar-thumb {
+  background-color: rgba(164, 42, 155, 0.55);
+}
+
+html.dark *::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(192, 132, 252, 0.85);
+}
+
+/* Subtle horizontal scrollbar for hobby chips */
+.no-scrollbar::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+.no-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.no-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(107, 47, 160, 0.25);
+  border-radius: 9999px;
+}
+html.dark .no-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(164, 42, 155, 0.45);
+}
+
+/* ============================================================================
+   Squadly Dark Mode (Luxury Dark Purple / Ink Palette)
+   ============================================================================ */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #0D081D !important;
+  color: #F3EFFC !important;
+}
+
+/* Backgrounds */
+html.dark .bg-\[\#FCF7F3\],
+html.dark .bg-\[\#FAF8F5\] {
+  background-color: #0D081D !important;
+}
+
+html.dark .bg-white {
+  background-color: #18102E !important;
+  color: #F3EFFC !important;
+}
+
+html.dark .bg-white\/95 {
+  background-color: rgba(24, 16, 46, 0.95) !important;
+}
+
+html.dark .bg-gray-50,
+html.dark .bg-gray-100,
+html.dark [class*="bg-gray-100"],
+html.dark [class*="bg-gray-50"] {
+  background-color: #241644 !important;
+  color: #EDE8FA !important;
+}
+
+html.dark .bg-purple-50,
+html.dark [class*="bg-purple-50"] {
+  background-color: #251747 !important;
+  color: #EDE8FA !important;
+}
+
+html.dark .bg-purple-100,
+html.dark [class*="bg-purple-100"] {
+  background-color: #381C66 !important;
+  color: #FFFFFF !important;
+}
+
+html.dark .bg-amber-50,
+html.dark [class*="bg-amber-50"] {
+  background-color: #382006 !important;
+  color: #FBBF24 !important;
+}
+
+/* Star Rating Buttons in Dark Mode */
+html.dark button.star-active,
+html.dark button[class*="star-active"] {
+  background-color: #3D2206 !important;
+  border-color: #F5A524 !important;
+  color: #F5A524 !important;
+}
+
+html.dark button.star-inactive,
+html.dark button[class*="star-inactive"] {
+  background-color: #1E1238 !important;
+  border-color: rgba(164, 42, 155, 0.25) !important;
+  color: #7A6F96 !important;
+}
+
+html.dark button.star-active svg,
+html.dark button[class*="star-active"] svg {
+  fill: #F5A524 !important;
+  color: #F5A524 !important;
+}
+
+html.dark button.star-inactive svg,
+html.dark button[class*="star-inactive"] svg {
+  fill: none !important;
+  color: #7A6F96 !important;
+}
+
+/* Optical QR Code Quiet Zone - ALWAYS pure solid white with dark modules */
+.qr-code-wrapper,
+html.dark .qr-code-wrapper,
+.qr-code-wrapper *,
+html.dark .qr-code-wrapper * {
+  background-color: #FFFFFF !important;
+}
+
+/* Emergency SOS Alert Buttons (Light Mode) */
+.sos-top-btn,
+button.sos-top-btn {
+  background-color: #FEF2F2 !important;
+  border: 1.5px solid #FCA5A5 !important;
+  color: #D93B3B !important;
+  box-shadow: 0 1px 3px rgba(217, 59, 59, 0.12) !important;
+}
+
+.sos-top-btn:hover,
+button.sos-top-btn:hover {
+  background-color: #FEE2E2 !important;
+  border-color: #F87171 !important;
+}
+
+.sos-top-btn span,
+button.sos-top-btn span {
+  color: #D93B3B !important;
+  font-weight: 900 !important;
+}
+
+.sos-top-btn svg,
+button.sos-top-btn svg {
+  color: #D93B3B !important;
+  stroke: #D93B3B !important;
+}
+
+/* Emergency SOS Alert Buttons in Dark Mode */
+html.dark .sos-top-btn,
+html.dark button.sos-top-btn,
+html.dark button[class*="sos-top-btn"] {
+  background-color: #381014 !important;
+  border-color: rgba(229, 72, 77, 0.75) !important;
+  color: #FF6B6B !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+html.dark .sos-top-btn:hover,
+html.dark button.sos-top-btn:hover {
+  background-color: #4E171C !important;
+  border-color: #FF6B6B !important;
+}
+
+html.dark .sos-top-btn span,
+html.dark button.sos-top-btn span,
+html.dark button[class*="sos-top-btn"] span {
+  color: #FF6B6B !important;
+  font-weight: 900 !important;
+}
+
+html.dark .sos-top-btn svg,
+html.dark button.sos-top-btn svg,
+html.dark button[class*="sos-top-btn"] svg {
+  color: #FF6B6B !important;
+  stroke: #FF6B6B !important;
+}
+
+html.dark .bg-red-50,
+html.dark [class*="bg-red-50"] {
+  background-color: #381014 !important;
+  color: #FF6B6B !important;
+}
+
+html.dark .bg-red-100,
+html.dark [class*="bg-red-100"] {
+  background-color: #4E171C !important;
+  color: #FFA3A3 !important;
+}
+
+/* Universal Danger / Cancel / Leave Buttons in Dark Mode */
+.btn-danger-outline,
+html.dark .btn-danger-outline,
+html.dark button.btn-danger-outline,
+html.dark button[class*="bg-red-50"],
+html.dark button.bg-red-50 {
+  background-color: #381014 !important;
+  border-color: rgba(229, 72, 77, 0.7) !important;
+  color: #FF6B6B !important;
+}
+
+html.dark .btn-danger-outline:hover,
+html.dark button.btn-danger-outline:hover,
+html.dark button[class*="bg-red-50"]:hover {
+  background-color: #4E171C !important;
+  color: #FFA3A3 !important;
+}
+
+html.dark button.text-\[\#D93B3B\],
+html.dark button[class*="text-[#D93B3B]"] {
+  color: #FF6B6B !important;
+}
+
+/* Universal Cancel & Neutral Action Buttons in Dark Mode */
+.btn-cancel,
+button.btn-cancel {
+  background-color: #E5E7EB;
+  color: #1F2937;
+  border: 1px solid #D1D5DB;
+}
+
+html.dark .btn-cancel,
+html.dark button.btn-cancel,
+html.dark button[class*="btn-cancel"],
+html.dark .bg-gray-200,
+html.dark [class*="bg-gray-200"] {
+  background-color: #281749 !important;
+  color: #EDE8FA !important;
+  border: 1px solid rgba(164, 42, 155, 0.45) !important;
+}
+
+html.dark .btn-cancel:hover,
+html.dark button.btn-cancel:hover,
+html.dark button[class*="bg-gray-200"]:hover {
+  background-color: #382166 !important;
+  color: #FFFFFF !important;
+}
+
+/* Auto-expanding Textareas (Expands smoothly when content exceeds 3 lines) */
+textarea.auto-expand-textarea,
+.auto-expand-textarea {
+  field-sizing: content;
+  min-height: 84px;
+  max-height: 280px;
+  resize: vertical;
+  line-height: 1.5;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* High Contrast Buttons & Interactive Pills in Dark Mode */
+html.dark button {
+  color: #F3EFFC;
+}
+
+html.dark button [class*="text-[#2E1A6E]"],
+html.dark button.text-\[\#2E1A6E\],
+html.dark button [class*="text-[#6B2FA0]"],
+html.dark button.text-\[\#6B2FA0\] {
+  color: #F3EFFC !important;
+}
+
+html.dark button[class*="bg-purple-50"],
+html.dark button[class*="bg-gray-100"] {
+  background-color: #251747 !important;
+  color: #EDE8FA !important;
+  border-color: rgba(164, 42, 155, 0.35) !important;
+}
+
+html.dark button[class*="bg-purple-50"] span,
+html.dark button[class*="bg-gray-100"] span {
+  color: #EDE8FA !important;
+}
+
+html.dark button[class*="bg-purple-50"] svg,
+html.dark button[class*="bg-gray-100"] svg {
+  color: #C084FC !important;
+}
+
+html.dark button.bg-\[\#2E1A6E\],
+html.dark .bg-\[\#2E1A6E\] {
+  background-color: #6B2FA0 !important;
+  color: #FFFFFF !important;
+}
+
+/* Text Colors */
+html.dark .text-\[\#1A1033\],
+html.dark .text-gray-900 {
+  color: #F3EFFC !important;
+}
+
+html.dark .text-gray-700,
+html.dark .text-gray-800 {
+  color: #DCD4F2 !important;
+}
+
+html.dark .text-gray-500,
+html.dark .text-gray-600 {
+  color: #A396C2 !important;
+}
+
+html.dark .text-\[\#2E1A6E\] {
+  color: #D8B4FE !important;
+}
+
+html.dark .text-\[\#6B2FA0\] {
+  color: #C084FC !important;
+}
+
+/* Borders */
+html.dark .border-gray-50,
+html.dark .border-gray-100,
+html.dark .border-gray-200,
+html.dark .border-gray-300,
+html.dark .border-purple-100,
+html.dark .border-purple-200,
+html.dark .border-purple-900\/5,
+html.dark .border-purple-100\/80 {
+  border-color: rgba(164, 42, 155, 0.25) !important;
+}
+
+/* Form Controls */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #120A24 !important;
+  border-color: rgba(164, 42, 155, 0.35) !important;
+  color: #F3EFFC !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #7A6F96 !important;
+}
+
+/* Cards & Modals */
+html.dark .sq-card {
+  background: #18102E !important;
+  box-shadow: 0 10px 30px -6px rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(164, 42, 155, 0.25);
+}
+
+html.dark .shadow-sm,
+html.dark .shadow-2xs {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+}

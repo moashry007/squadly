@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="sqGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2E1A6E" />
+      <stop offset="35%" stop-color="#6B2FA0" />
+      <stop offset="70%" stop-color="#A42A9B" />
+      <stop offset="100%" stop-color="#C4407A" />
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="28" fill="url(#sqGrad)" />
+  <text x="24" y="82" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="68" fill="#FFFFFF">S</text>
+  <circle cx="84" cy="76" r="10" fill="#F5A524" />
+</svg>

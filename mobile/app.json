@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Squadly.",
+    "slug": "squadly-egypt",
+    "version": "1.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#2E1A6E"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "eg.squadly.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Squadly uses your camera for KYC National ID verification, Live Liveness Selfie, and QR Attendance Check-In.",
+        "NSMicrophoneUsageDescription": "Squadly uses your microphone to record up to 60-second voice notes in activity group chats.",
+        "NSLocationWhenInUseUsageDescription": "Squadly uses your GPS location to discover nearby activities and dispatch live coordinates during SOS emergencies."
+      }
+    },
+    "android": {
+      "package": "eg.squadly.app",
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ]
+    }
+  }
+}
