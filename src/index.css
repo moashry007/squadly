@@ -130,7 +130,8 @@ html.dark body {
 
 /* Backgrounds */
 html.dark .bg-\[\#FCF7F3\],
-html.dark .bg-\[\#FAF8F5\] {
+html.dark .bg-\[\#FAF8F5\],
+html.dark .bg-\[\#FAF7FD\] {
   background-color: #0D081D !important;
 }
 

@@ -581,7 +581,7 @@ export default function App() {
 
   if (routeMode === 'website') {
     return (
-      <div dir={lang === 'ar' ? 'rtl' : 'ltr'} className="min-h-screen bg-[#FAF7FD]">
+      <div dir={lang === 'ar' ? 'rtl' : 'ltr'} className="min-h-screen bg-[#FAF7FD] dark:bg-[#0D081D] text-[#1A1033] dark:text-[#F3EFFC]">
         {toast && (
           <div className="fixed top-5 left-1/2 -translate-x-1/2 z-[100] max-w-md w-[92%] px-4 py-3 rounded-2xl shadow-2xl border flex items-center gap-3 bg-[#1A1033] text-white border-white/15">
             <span className="text-xs font-bold flex-1">{toast.msg}</span>
@@ -592,6 +592,8 @@ export default function App() {
           onToggleLang={toggleLang}
           onLaunchApp={() => switchRoute('member')}
           onOpenAdmin={() => switchRoute('admin')}
+          theme={theme}
+          onToggleTheme={toggleTheme}
         />
       </div>
     );
